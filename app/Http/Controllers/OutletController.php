@@ -55,15 +55,17 @@ public function index(Request $request)
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'location' => 'nullable|string|max:255',
+            'slug' => 'required|string|max:255',
             'status' => 'required|string|in:active,inactive',
         ]);
 
         // Convert status string to boolean
         $validated['status'] = $validated['status'] === 'active';
 
-        // Generate slug from name + location without random string
-        $slugBase = $validated['name'] . '-' . ($validated['location'] ?? '');
-        $validated['slug'] = Str::slug($slugBase);
+        // Generate slug from name + location
+        // $slugBase = implode(' ', array_filter([$validated['name'] ?? null, $validated['location'] ?? null]));
+        // $validated['slug'] = Str::slug($slugBase);
+
 
         Outlet::create($validated);
 
@@ -75,17 +77,19 @@ public function index(Request $request)
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'location' => 'nullable|string|max:255',
+            'slug'=>'required|string|max:255',
             'status' => 'required|string|in:active,inactive',
+            
         ]);
 
         // Convert status string to boolean
         $validated['status'] = $validated['status'] === 'active';
 
         // Regenerate slug if name or location changed
-        if ($validated['name'] !== $outlet->name || $validated['location'] !== $outlet->location) {
-            $slugBase = $validated['name'] . '-' . ($validated['location'] ?? '');
-            $validated['slug'] = Str::slug($slugBase);
-        }
+        // if ($validated['name'] !== $outlet->name || $validated['location'] !== $outlet->location) {
+        //     $slugBase = $validated['name'] . '-' . ($validated['location'] ?? '');
+        //     $validated['slug'] = Str::slug($slugBase);
+        // }
 
         $outlet->update($validated);
 
