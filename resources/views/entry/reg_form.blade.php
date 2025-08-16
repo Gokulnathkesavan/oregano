@@ -8,8 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" href="{{ asset('assets/images/logo/Oregano Logo_English_page-0001.jpg') }}" type="image/x-icon">
-<link rel="shortcut icon" href="{{ asset('assets/images/logo/Oregano Logo_English_page-0001.jpg') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('assets/images/logo/oregano.png') }}" type="image/x-icon">
+<link rel="shortcut icon" href="{{ asset('assets/images/logo/oregano.png') }}" type="image/x-icon">
      <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -79,7 +79,7 @@
             <div class="text-center mb-8 animate-fade-in">
                 <div
                     class="w-20 h-20 bg-brand rounded-full mx-auto mb-4 flex items-center justify-center shadow-elegant">
-                    <img src="{{ asset('assets/images/logo/Oregano Logo_English_page-0001.jpg') }}" alt="Oregano Logo"
+                    <img src="{{ asset('assets/images/logo/oregano.png') }}" alt="Oregano Logo"
                         class="w-12 h-12 object-contain" />
                 </div>
                 <h1 class="font-heading text-3xl font-bold text-gray-800 mb-2">Welcome to Oregano</h1>
@@ -230,7 +230,7 @@
                         </div>
 
                         <!-- File upload field -->
-                        <div class="group">
+                        <!-- <div class="group">
                             <label for="bill_image"
                                 class="block text-gray-700 font-semibold mb-3 text-sm uppercase tracking-wide">
                                 Upload Bill Image *
@@ -272,7 +272,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- Terms checkbox -->
                         <div class="flex items-start space-x-4 p-6 bg-gray-50/50 rounded-2xl border border-gray-200">
@@ -458,7 +458,7 @@
                                 </svg>
                                 <h3 class="text-3xl font-bold text-gray-800 mb-4 font-heading">Thank You!</h3>
                                 <p class="text-gray-600 text-lg mb-6">Your entry has been submitted successfully.</p>
-                                <p class="text-gray-500 text-sm">Don't forget to drop your physical entry in our Draw Box at the restaurant to complete your submission!</p>
+                                
                             </div>
                         `;
                     }

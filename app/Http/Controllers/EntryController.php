@@ -48,13 +48,13 @@ class EntryController extends Controller
         $name= $request->name;
 
         //Check Bill Number Dubilicate 
-        $dublicate = Entry::where('bill_number', $request->bill_number)->first();
-        if ($dublicate) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Bill Number Already Exist',
-            ], 402);
-        }
+        // $dublicate = Entry::where('bill_number', $request->bill_number)->first();
+        // if ($dublicate) {
+        //     return response()->json([
+        //         'status' => 'error',
+        //         'message' => 'Bill Number Already Exist',
+        //     ], 402);
+        // }
 
 
         // Handle bill image upload (if provided)

@@ -35,13 +35,13 @@
                         </select>
                     </div>
 
-                    <div class="col-md-3">
+                    <!-- <div class="col-md-3">
                         <select name="terms_accepted" class="form-select">
                             <option value="">-- Terms Accepted --</option>
                             <option value="1" {{ request('terms_accepted') === '1' ? 'selected' : '' }}>Yes</option>
                             <option value="0" {{ request('terms_accepted') === '0' ? 'selected' : '' }}>No</option>
                         </select>
-                    </div>
+                    </div> -->
 
                     <div class="col-auto">
                         <button type="submit" class="btn btn-primary">Filter</button>
@@ -76,7 +76,7 @@
                             <th>Mobile</th>
                             <th>Outlet</th>
                             <th>Bill Number</th>
-                            <th>Bill Image</th>
+                            <!-- <th>Bill Image</th> -->
                             <th>Terms Accepted</th>
                             <th>Submitted At</th>
                         </tr>
@@ -90,7 +90,7 @@
                                 <td>{{ $entry->mobile_number }}</td>
                                 <td>{{ $entry->outlet->name ?? 'N/A' }}</td>
                                 <td>{{ $entry->bill_number ?? 'N/A' }}</td>
-                                <td>
+                                <!-- <td>
                                     @if($entry->bill_image)
                                         <a href="{{ asset('storage/' . $entry->bill_image) }}" target="_blank">
                                             <img src="{{ asset('storage/' . $entry->bill_image) }}" alt="Bill Image"
@@ -99,7 +99,7 @@
                                     @else
                                         N/A
                                     @endif
-                                </td>
+                                </td> -->
 
                                 <td>
                                     @if($entry->terms_accepted)
