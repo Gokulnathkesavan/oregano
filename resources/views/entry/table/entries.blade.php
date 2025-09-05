@@ -118,22 +118,53 @@
                     </tbody>
                 </table>
 
-                <nav aria-label="Page navigation example" class="mt-3">
-                    <ul class="pagination pagination-primary pagin-border-primary justify-content-center">
-                        <li class="page-item {{ $entries->onFirstPage() ? 'disabled' : '' }}">
-                            <a class="page-link" href="{{ $entries->previousPageUrl() ?? 'javascript:void(0)' }}"
-                                tabindex="-1">Previous</a>
-                        </li>
-                        @foreach ($entries->getUrlRange(1, $entries->lastPage()) as $page => $url)
-                            <li class="page-item {{ $entries->currentPage() == $page ? 'active' : '' }}">
-                                <a class="page-link" href="{{ $url }}">{{ $page }}</a>
-                            </li>
-                        @endforeach
-                        <li class="page-item {{ !$entries->hasMorePages() ? 'disabled' : '' }}">
-                            <a class="page-link" href="{{ $entries->nextPageUrl() ?? 'javascript:void(0)' }}">Next</a>
-                        </li>
-                    </ul>
-                </nav>
+               <nav aria-label="Page navigation" class="mt-3">
+    <ul class="pagination pagination-primary pagin-border-primary justify-content-center">
+        {{-- Previous Page --}}
+        <li class="page-item {{ $entries->onFirstPage() ? 'disabled' : '' }}">
+            <a class="page-link" href="{{ $entries->previousPageUrl() ?? 'javascript:void(0)' }}" tabindex="-1">
+                Previous
+            </a>
+        </li>
+
+        {{-- First Page --}}
+        @if ($entries->currentPage() > 3)
+            <li class="page-item">
+                <a class="page-link" href="{{ $entries->url(1) }}">1</a>
+            </li>
+            @if ($entries->currentPage() > 4)
+                <li class="page-item disabled"><span class="page-link">...</span></li>
+            @endif
+        @endif
+
+        {{-- Page Range --}}
+        @foreach (range(max(1, $entries->currentPage() - 2), min($entries->lastPage(), $entries->currentPage() + 2)) as $page)
+            <li class="page-item {{ $entries->currentPage() == $page ? 'active' : '' }}">
+                <a class="page-link" href="{{ $entries->url($page) }}">{{ $page }}</a>
+            </li>
+        @endforeach
+
+        {{-- Last Page --}}
+        @if ($entries->currentPage() < $entries->lastPage() - 2)
+            @if ($entries->currentPage() < $entries->lastPage() - 3)
+                <li class="page-item disabled"><span class="page-link">...</span></li>
+            @endif
+            <li class="page-item">
+                <a class="page-link" href="{{ $entries->url($entries->lastPage()) }}">
+                    {{ $entries->lastPage() }}
+                </a>
+            </li>
+        @endif
+
+        {{-- Next Page --}}
+        <li class="page-item {{ !$entries->hasMorePages() ? 'disabled' : '' }}">
+            <a class="page-link" href="{{ $entries->nextPageUrl() ?? 'javascript:void(0)' }}">
+                Next
+            </a>
+        </li>
+    </ul>
+</nav>
+
             </div>
         </div>
     </div>
