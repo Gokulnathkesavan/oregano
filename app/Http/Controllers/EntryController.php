@@ -22,11 +22,20 @@ class EntryController extends Controller
 
         $entries = $query->paginate(10);
 
+        // 👇 Add overall count (ignores filters)
+        $totalEntries = Entry::count();
+
         $allEntryNames = Entry::distinct()->pluck('name');
         $allOutlets = Outlet::pluck('name', 'id');
 
-        return view('entry.table.entries', compact('entries', 'allEntryNames', 'allOutlets'));
+        return view('entry.table.entries', compact(
+            'entries',
+            'allEntryNames',
+            'allOutlets',
+            'totalEntries'
+        ));
     }
+
 
     // Show registration form for a given outlet
     public function showForm($slug)
@@ -45,7 +54,7 @@ class EntryController extends Controller
     {
 
 
-        $name= $request->name;
+        $name = $request->name;
 
         //Check Bill Number Dubilicate 
         // $dublicate = Entry::where('bill_number', $request->bill_number)->first();
@@ -74,7 +83,7 @@ class EntryController extends Controller
         ]);
 
         return response()->json([
-            'name'=>$name,
+            'name' => $name,
             'status' => 'success',
             'message' => 'Your entry has been submitted successfully.'
         ]);

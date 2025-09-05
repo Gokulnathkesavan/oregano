@@ -17,6 +17,17 @@
             </div>
         </div>
 
+        <div class="card border-0 shadow-sm rounded-3 text-center p-3" style="width: 180px;">
+    <div class="d-flex flex-column align-items-center">
+        <!-- Icon -->
+        
+        <!-- Label -->
+        <small class="text-muted text-uppercase">Total Entries</small>
+        <!-- Number -->
+        <h4 class="fw-bold mb-0">{{ $totalEntries }}</h4>
+    </div>
+</div>
+
 
 
         <!-- Filter Form -->
